@@ -57,3 +57,5 @@ Parte Backend Avanzado
 2. scope :scopePremium, -> {where(premium: true)}
 
 3. scope :last_n, (->(n) { order(:id).limit(n) })
+
+4.
