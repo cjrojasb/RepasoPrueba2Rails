@@ -4,7 +4,10 @@ Taller Preparación Prueba N°2 Rails
 
 Desarrollo:
 
+Parte Backend
+
 1. rails new Tienda -d postgresql
+    git checkout -b development
 
 2. rails g model Category name:string
    rails g model Product name:string price:integer category:references
@@ -45,3 +48,14 @@ Desarrollo:
         producto.save
 
         Category.all.each { |element| element.name.upcase!; element.save }
+
+
+Parte Backend Avanzado
+
+1. git checkout -b backend
+
+2. scope :scopePremium, -> {where(premium: true)}
+
+3. scope :last_n, (->(n) { order(:id).limit(n) })
+
+4.
