@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Taller Preparación Prueba N°2 Rails
 
-Things you may want to cover:
+Desarrollo:
 
-* Ruby version
+1. rails new Tienda -d postgresql
 
-* System dependencies
+2. rails g model Category name:string
+   rails g model Product name:string price:integer category:references
 
-* Configuration
+3. rake diagram:all
 
-* Database creation
+4. product.rb -> validates :price, presence: true
 
-* Database initialization
+5. rails console -> Product.create(name: "Mouse", price: 100)   (0.1ms)  BEGIN
+                    (0.1ms)  ROLLBACK
 
-* How to run the test suite
+6. rails g migration addPremiumToProduct premium:boolean  
+   product.rb ->   before_save :add_columFalse
+                    def add_columFalse
+                      if self.premium.nil?
+                        self.premium = false
+                      end
+                    end
 
-* Services (job queues, cache servers, search engines, etc.)
+7. -> seeds.rb 
 
-* Deployment instructions
+        Category.destroy_all
 
-* ...
+        c1 = Category.create(name: "Celulares")
+        c2 = Category.create(name: "Computadores")
+        c3 = Category.create(name: "Televisores")
+
+          pro_c1 = Product.create(name: "Cell 1", price: 100, category: c1)
+          pro_c2 = Product.create(name: "Computer 1", price: 100, category_id: c2.id)
+
+          pro_c3 = c3.products.build(name: "TV 1", price: 100).save
+          pro2_c3 = c3.products.build(name: "TV 2", price: 100).save
+
+          Product.last.destroy
+
+        producto = Product.last
+        producto.update(premium: true)
+        producto.save
+
+        Category.all.each { |element| element.name.upcase!; element.save }
