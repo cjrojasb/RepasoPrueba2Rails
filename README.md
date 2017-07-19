@@ -1,5 +1,7 @@
 # README
 
+Heroku App: https://taller2railsheroku.herokuapp.com/
+
 Taller Preparación Prueba N°2 Rails
 
 Desarrollo:
@@ -91,3 +93,16 @@ Parte Front-end
 3. <% @productos.each do |element| %>
     <li><%= element.name %></li>
    <% end %>
+
+
+Deployment
+
+1. heroku create taller2railsheroku
+
+2. git push heroku master
+
+3. heroku run rake db:migrate
+
+4. heroku run rake db:seed
+
+5. heroku open
