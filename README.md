@@ -58,4 +58,25 @@ Parte Backend Avanzado
 
 3. scope :last_n, (->(n) { order(:id).limit(n) })
 
-4.
+4. dependent: :destroy
+
+5. -> product.rb
+
+      after_destroy :check_last
+
+      def check_last
+        category.destroy unless category.products.any?
+      end
+
+
+6. rails g migration addDiscToCategory disc:integer
+
+  -> category.rb
+    
+     validates :disc, :inclusion => {:in => 0..100}
+ 
+7. -> product.rb 
+  
+      def price_final
+       self.price*(100 - self.category.disc)/100
+      end
