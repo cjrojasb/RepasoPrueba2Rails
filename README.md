@@ -80,3 +80,14 @@ Parte Backend Avanzado
       def price_final
        self.price*(100 - self.category.disc)/100
       end
+
+
+Parte Front-end
+
+1. git checkout -b frontend
+
+2. rails g controller products index
+
+3. <% @productos.each do |element| %>
+    <li><%= element.name %></li>
+   <% end %>

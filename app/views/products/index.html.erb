@@ -1,0 +1,52 @@
+<h1 class="center bold">Listado de Productos</h1>
+<hr>
+<div class="row">
+  <div class="col-lg-4 col-md-offset-2">
+    <form action="#" method="get">
+      <div class="input-group">
+      <input type="text" class="form-control" placeholder="Buscar por Nombre" required>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-success btn"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-4">
+    <form action="#" method="get">
+      <div class="input-group">
+       <input type="text" class="form-control" placeholder="Buscar por Precio" required>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+<div class="row">
+ <div class="col-md-12">
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th class="center"><b>Nombre</b></th>
+         <th class="center"><b>Precio</b></th>
+         <th class="center"><b>Categoría</b></th>
+         <th class="center"><b>Descuento</b></th>
+         <th class="center"><b>Precio Final</b></th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @productos.each do |product| %>
+       <tr>
+         <td class="center"><%= product.name %></td>
+         <td class="center"><%= product.price %></td>
+         <td class="center"><%= product.category.name %></td>
+         <td class="center disc"><%= product.category.disc %>%</td>
+         <td class="center"><%= product.price_final %></td>
+       </tr>
+       <% end %>
+     </tbody>
+   </table>
+ </div>
+</div>
+
